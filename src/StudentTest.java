@@ -9,11 +9,13 @@ import static org.testng.Assert.*;
 public class StudentTest {
   List<Student> students = new ArrayList<>();
 
-  @Test
-  public void testGetAvgRating() {
-
+  @Test(priority = 1)
+  public void testGetAvgRatingNoStudents() {
     assertEquals(Student.getAvgRating(), 0.0d, "Average rating is wrong");
-
+  }
+  
+  @Test(priority = 2)
+  public void testGetAvgRating() {
     Student student1 = new Student("Petro");
     student1.setRating(15);
     Student student2 = new Student("Volodymyr");
@@ -25,7 +27,7 @@ public class StudentTest {
     assertEquals(Student.getAvgRating(), 22.5d, "Average rating is wrong");
   }
 
-  @Test
+  @Test(priority = 2)
   public void testGetName() {
     Student student = new Student("Petro");
 
@@ -34,7 +36,7 @@ public class StudentTest {
     assertEquals(student.getName(), "Petro", "Student's name is wrong");
   }
 
-  @Test
+  @Test(priority = 2)
   public void testSetName() {
     Student student = new Student("Petro");
     student.setName("Volodymyr");
@@ -44,7 +46,7 @@ public class StudentTest {
     assertEquals(student.getName(), "Volodymyr", "Student's name is wrong");
   }
 
-  @Test
+  @Test(priority = 2)
   public void testGetRating() {
     Student student1 = new Student("Volodymyr");
 
@@ -60,7 +62,7 @@ public class StudentTest {
     assertEquals(student2.getRating(), 51, "Student's name is wrong");
   }
 
-  @Test
+  @Test(priority = 2)
   public void testSetRating() {
     Student student = new Student("Volodymyr");
     student.setRating(30);
@@ -70,7 +72,7 @@ public class StudentTest {
     assertEquals(student.getRating(), 30, "Student's name is wrong");
   }
 
-  @Test
+  @Test(priority = 2)
   public void testBetterStudent() {
     Student student1 = new Student("Petro");
     student1.setRating(15);
@@ -99,11 +101,8 @@ public class StudentTest {
         student1 + " is not better than " + student2);
   }
 
-  @Test
+  @Test(priority = 2)
   public void testChangeRating() {
-
-    assertEquals(Student.getAvgRating(), 0.0d, "Average rating is wrong");
-
     Student student1 = new Student("Petro");
     student1.setRating(15);
 
@@ -121,7 +120,7 @@ public class StudentTest {
     assertEquals(Student.getAvgRating(), 33.0d, "Average rating is wrong");
   }
 
-  @Test
+  @Test(priority = 2)
   public void testToString() {
     Student student = new Student("Petro");
     student.setRating(51);
